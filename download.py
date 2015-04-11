@@ -8,11 +8,10 @@ a tool whice can download hot photo in renren.com
 import json
 import urllib
 import os
-def get_links():    
-    req=urllib.urlopen('https://api.renren.com/v2/share/hot/list?access_token=475780|6.bf3041f55a62900ecdeaf9bdaf9a6690.2592000.1431000000-483066716&shareType=TYPE_PHOTO') 
+def get_links(api_url):  
+    req=urllib.urlopen(api_url)
     data=json.loads((req.read()).decode('utf-8'))
-    links=[l['thumbUrl'] for l in data['response']]
-    return links
+    return data
     
 
 def download_links(directory,link,name):
